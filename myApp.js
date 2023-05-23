@@ -13,7 +13,6 @@ let personSchema = new mongoose.Schema({
   favoriteFoods: [String]
 });
 
-
 let Person = mongoose.model("Person", personSchema);
 
 //Create and Save a Record of a Model
@@ -29,7 +28,10 @@ const createAndSavePerson = (done) => {
 
 const createManyPeople = (arrayOfPeople, done) => {
 
-  mongoose.Model.create(arrayOfPeople, done(null, data));
+  Person.create(arrayOfPeople, (err, done) => {
+    if(err) return done(err);
+    done(null, data);
+  });
   
 };
 
