@@ -16,10 +16,10 @@ let personSchema = new mongoose.Schema({
 
 let Person = mongoose.model("Person", personSchema);
 
+//Create and Save a Record of a Model
 const createAndSavePerson = (done) => {
   let newPerson = new Person({name: "Juan", age: 40, favoriteFoods: ['pizza', 'bread', 'apple']});
-  newPerson.save();
-  done(null /*, data*/);
+  newPerson.save(done(null /*, data*/));
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
